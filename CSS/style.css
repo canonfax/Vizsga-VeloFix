@@ -1,0 +1,164 @@
+/*
+  Shimano Service Center - style.css
+  Prémium fekete/kék Shimano téma
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@300;400;500;600&display=swap');
+
+:root {
+    --bg:          #0a0c0f;
+    --bg2:         #0f1318;
+    --bg3:         #151a22;
+    --panel:       #111620;
+    --border:      #1e2d42;
+    --border2:     #162035;
+    --blue:        #0066cc;
+    --blue-light:  #1a8fff;
+    --blue-glow:   rgba(0,102,204,.18);
+    --blue-glow2:  rgba(0,102,204,.07);
+    --silver:      #c8d4e0;
+    --silver-dim:  #6a8098;
+    --silver-dark: #2a3a4a;
+    --red:         #cc2200;
+    --text:        #d0dcea;
+    --text-dim:    #5a7a96;
+    --text-muted:  #283848;
+    --font-display: 'Barlow Condensed', sans-serif;
+    --font-body:    'Barlow', sans-serif;
+    --r: 4px;
+    --r2: 8px;
+    --t: .2s ease;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+    font-family: var(--font-body);
+    background: var(--bg);
+    color: var(--text);
+    font-size: 15px;
+    min-height: 100vh;
+}
+
+/* Header */
+.site-header {
+    background: var(--bg2);
+    border-bottom: 2px solid var(--blue);
+    position: sticky; top: 0; z-index: 100;
+    box-shadow: 0 2px 24px rgba(0,102,204,.2);
+}
+.header-inner {
+    max-width: 1200px; margin: 0 auto;
+    padding: 0 2rem;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 64px;
+}
+.logo { display: flex; align-items: center; gap: 1rem; text-decoration: none; }
+.logo-shimano img {
+    height: 22px; width: auto;
+    filter: brightness(0) invert(1);
+}
+.logo-divider {
+    width: 1px; height: 28px;
+    background: var(--border);
+}
+.logo-text { line-height: 1.1; }
+.logo-title {
+    font-family: var(--font-display);
+    font-size: 1rem; font-weight: 800;
+    color: var(--text); letter-spacing: .12em;
+    text-transform: uppercase;
+}
+.logo-sub { font-size: .65rem; color: var(--blue-light); letter-spacing: .1em; text-transform: uppercase; }
+
+.header-nav { display: flex; align-items: center; gap: .25rem; }
+.header-nav a {
+    padding: .45rem 1rem;
+    text-decoration: none; color: var(--text-dim);
+    font-size: .82rem; font-weight: 600;
+    letter-spacing: .05em; text-transform: uppercase;
+    border-radius: var(--r); transition: all var(--t);
+    border: 1px solid transparent;
+}
+.header-nav a:hover { color: var(--text); background: var(--bg3); border-color: var(--border); }
+.nav-admin {
+    color: var(--blue-light) !important;
+    border-color: var(--border) !important;
+}
+.nav-admin:hover { background: var(--blue-glow2) !important; border-color: var(--blue) !important; }
+
+/* Hero */
+.hero {
+    background: 
+        linear-gradient(160deg, rgba(0,102,204,.12) 0%, transparent 50%),
+        linear-gradient(0deg, var(--bg) 0%, transparent 100%),
+        var(--bg2);
+    border-bottom: 1px solid var(--border);
+    padding: 4rem 2rem 3.5rem;
+    position: relative; overflow: hidden;
+}
+.hero::before {
+    content: '';
+    position: absolute; top: 0; right: -10px; bottom: 0;
+    width: 55%; opacity: .03;
+    background: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='100' cy='100' r='90' stroke='white' stroke-width='1' fill='none'/%3E%3Ccircle cx='100' cy='100' r='70' stroke='white' stroke-width='1' fill='none'/%3E%3Ccircle cx='100' cy='100' r='50' stroke='white' stroke-width='1' fill='none'/%3E%3Ccircle cx='100' cy='100' r='8' fill='white'/%3E%3C/svg%3E") center/contain no-repeat;
+}
+.hero-inner { max-width: 1200px; margin: 0 auto; }
+
+.hero-eyebrow {
+    display: inline-flex; align-items: center; gap: .5rem;
+    font-size: .72rem; font-weight: 700;
+    color: var(--blue-light); letter-spacing: .15em; text-transform: uppercase;
+    border: 1px solid rgba(26,143,255,.3);
+    border-radius: 2px; padding: .3rem .85rem;
+    margin-bottom: 1.5rem;
+    background: rgba(26,143,255,.06);
+}
+.hero-eyebrow::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--blue-light); box-shadow: 0 0 6px var(--blue-light); }
+
+.hero h1 {
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    font-weight: 900; line-height: 1;
+    color: #fff; letter-spacing: .02em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+}
+.hero h1 em {
+    font-style: normal; color: var(--blue-light);
+    display: block;
+}
+.hero-sub {
+    font-size: 1.05rem; color: var(--silver-dim);
+    max-width: 520px; line-height: 1.6;
+    margin-bottom: 2.5rem;
+}
+.hero-stats {
+    display: flex; gap: 2.5rem; flex-wrap: wrap;
+}
+.hero-stat .n {
+    font-family: var(--font-display);
+    font-size: 2rem; font-weight: 900;
+    color: var(--blue-light); line-height: 1;
+}
+.hero-stat .l { font-size: .72rem; color: var(--text-dim); letter-spacing: .08em; text-transform: uppercase; margin-bottom: .2rem; }
+
+/* Step Bar */
+.step-bar { background: var(--bg2); border-bottom: 1px solid var(--border); padding: 1rem 2rem; }
+.step-bar-inner {
+    max-width: 1200px; margin: 0 auto;
+    display: flex; align-items: center; justify-content: center; gap: 0;
+}
+.step-item { display: flex; align-items: center; gap: .6rem; flex-direction: column; }
+.step-dot {
+    width: 36px; height: 36px; border-radius: 50%;
+    border: 2px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    font-family:  var(--font-display); font-size: .85rem; font-weight: 800;
+    color: var(--text-dim); background: var(--bg3);
+    transition: all .3s ease;
+}
+.step-dot.active { border-color: var(--blue); color: #fff; background: var(--blue); box-shadow: 0 0 16px var(--blue-glow); }
+.step-dot.done { border-color: var(--blue); color: var(--blue); background: var(--blue-glow2); }
+.step-item span { font-size: .65rem; font-weight: 700; color: var(--text-dim); letter-spacing: .08em; }
+.step-item.active span, .step-item.done span { color: var(--blue-light);}
