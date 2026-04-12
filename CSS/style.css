@@ -229,3 +229,109 @@ body {
 
 .mech-shimano-logo {  height: 18px; display: flex; align-items: center; }
 .mech-shimano-logo img { height: 100%; width: auto; filter: brightness(0) invert(.6); }
+
+.mech-avatar {
+    width: 72px; height: 72px; border-radius: 50%;
+    border: 2px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    background: var(--bg3);
+    box-shadow: 0 0 0 4px var(--blue-glow2);
+    transition: border-color var(--t), box-shadow var(--t);
+}
+.mech-card:hover .mech-avatar { border-color: var(--blue); box-shadow: 0 0 0 4px var(--blue-glow); }
+.mech-avatar-inner { font-size: 2.2rem; line-height: 1; }
+
+.mech-name {
+    font-family: var(--font-display);
+    font-size: 1.3rem;font-weight: 800; text-transform: uppercase;
+    letter-spacing: .06em; color: #fff;
+}
+.mech-title { font-size: .72rem; font-weight: 600; color: var(--blue-light); letter-spacing: .1em; text-transform: uppercase; }
+
+.mech-hours {
+    display: flex; align-items: center; gap: .4rem;
+    font-size: .82rem; color: var(--text-dim);
+    background: var(--bg3); border: 1px solid var(--border);
+    border-radius: 2px; padding: .3rem .75rem;
+}
+/* BTN Primary */
+.btn-prymary {
+    background: var(--blue); color: #fff;
+    border: none; border-radius: var(--r);
+    padding: .7rem 1.5rem;
+    font-family: var(--font-display); font-size: .95rem;
+    font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+    cursor: pointer; transition: all var(--t); width: 100%;
+    box-shadow: 0 4px 16px rgba(0,102,204,.3);
+}
+.btn-prymary:hover:not(:disabled) {
+    background: var(--blue-light);
+    box-shadow: 0 6px 24px rgba(0,102,204,.5);
+    transform: translateY(-1px);
+}
+.btn-prymary:disabled { opacity: .4; cursor: not-allowed; transform: none; }
+
+.btn-back {
+    background: transparent; border: 1px solid var(--border);
+    color: var(--text-dim); border-radius: var(--r);
+    padding: .5rem 1rem; font-size: .82rem; font-weight: 600;
+    cursor: pointer; transition: all var(--t); margin-bottom: 1.5rem;
+    font-family: var(--font-body);
+}
+.btn-back:hover { border-color: var(--blue-light); color: var(--blue-light); }
+
+/* Booking WHO */
+.booking-who {
+    background: var(--bg2); border: 1px solid var(--border);
+    border-left: 3px solid var(--blue);
+    border-radius: var(--r2); padding: 1.25rem 1.5rem;
+    margin-bottom: 1.75rem;
+}
+.bw-badge { font-size: .65rem; font-weight: 700; color: var(--blue-light); letter-spacing: .12em; text-transform: uppercase; margin-bottom: .35rem; }
+.bw-name { font-family: var(--font-display); font-size: 1.4rem; font-weight: 800; text-transform: uppercase; color: #fff; letter-spacing: .05em; }
+.bw-title { font-size: .75rem; color: var(--blue-light); letter-spacing: .08em; margin-top: .1rem; }
+.bw-hours { font-size: .82rem; color: var(--text-dim); margin-top: .35rem; }
+
+/* Booking Layout */
+.booking-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+
+/* Panel */
+.panel {
+    background: var(--panel); border: 1px solid var(--border);
+    border-radius: var(--r2); padding: 1.25rem;
+    margin-bottom: 1rem;
+}
+.panel:last-child { margin-bottom: 0; }
+.panel-label {
+    font-family: var(--font-display);
+    font-size: .78rem; font-weight: 700;
+    color: var(--blue-light); letter-spacing: .12em; text-transform: uppercase;
+    margin-bottom: 1rem; padding-bottom: .65rem;
+    border-bottom: 1px solid var(--border);
+}
+
+/* Form */
+.form-group { margin-bottom: 1rem; }
+.form-group:last-child { margin-bottom: 0; }
+.form-group label {
+    display: block; font-size: .75rem; font-weight: 600;
+    color: var(--text-dim); letter-spacing: .06em;
+    text-transform: uppercase; margin-bottom: .4rem;
+}
+.form-group input,
+.form-group select {
+    width: 100%; background: var(--bg3); border: 1px solid var(--border);
+    border-radius: var(--r); padding: .6rem .85rem;
+    color: var(--text); font-family: var(--font-body); font-size: .9rem;
+    transition: border-color var(--t), box-shadow var(--t);
+    appearance: none;
+}
+.form-group input:focus,
+.form-group select:focus {
+    outline: none; border-color: var(--blue);
+    box-shadow: 0 0 0 3px var(--blue-glow);
+}
+.form-group select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%235a7a96' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right .85rem center; padding-right: 2rem; cursor: pointer; }
+.form-group select option { background: var(--bg3); }
+
+/* Summary */
