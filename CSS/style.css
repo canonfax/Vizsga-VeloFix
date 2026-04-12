@@ -255,7 +255,7 @@ body {
     border-radius: 2px; padding: .3rem .75rem;
 }
 /* BTN Primary */
-.btn-prymary {
+.btn-primary {
     background: var(--blue); color: #fff;
     border: none; border-radius: var(--r);
     padding: .7rem 1.5rem;
@@ -264,12 +264,12 @@ body {
     cursor: pointer; transition: all var(--t); width: 100%;
     box-shadow: 0 4px 16px rgba(0,102,204,.3);
 }
-.btn-prymary:hover:not(:disabled) {
+.btn-primary:hover:not(:disabled) {
     background: var(--blue-light);
     box-shadow: 0 6px 24px rgba(0,102,204,.5);
     transform: translateY(-1px);
 }
-.btn-prymary:disabled { opacity: .4; cursor: not-allowed; transform: none; }
+.btn-primary:disabled { opacity: .4; cursor: not-allowed; transform: none; }
 
 .btn-back {
     background: transparent; border: 1px solid var(--border);
@@ -343,7 +343,7 @@ body {
 }
 .sum-row:last-child { border-bottom: none; }
 .sum-row span { color: var(--text-dim); }
-.sum-row strong { color: var var(--text); font-weight: 600; }
+.sum-row strong { color: var(--text); font-weight: 600; }
 
 .btn-submit { margin-bottom: .25rem; font-size: 1.05rem; padding: .85rem; }
 
@@ -411,7 +411,7 @@ body {
     width: 72px; height: 72px; border-radius: 50%;
     background: linear-gradient(135deg, var(--blue), var(--blue-light));
     display: flex; align-items: center; justify-content: center;
-    font-size: .2rem; color: #fff; margin: 0 auto 1.5rem;
+    font-size: 2rem; color: #fff; margin: 0 auto 1.5rem;
     box-shadow: 0 8px 32px var(--blue-glow);
     animation: popIn .4s cubic-bezier(.17,.67,.34,1.3);
 }
