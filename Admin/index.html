@@ -8,7 +8,6 @@
 </head>
 <body>
 
-  <!-- SIDEBAR -->
   <aside class="sidebar">
     <div class="sb-logo">
       <div>
@@ -20,13 +19,11 @@
     </div>
     <nav class="sb-nav">
       <a href="index.html" class="sb-link active">
-        <span class="ico">📋</span>
-        Foglalások
+        <span class="ico">📋</span> Foglalások
         <span class="sb-count" id="nav-cnt">–</span>
       </a>
       <a href="../index.html" class="sb-link">
-        <span class="ico">🔧</span>
-        Foglaló oldal
+        <span class="ico">🔧</span> Foglaló oldal
       </a>
     </nav>
     <div class="sb-footer">
@@ -35,15 +32,15 @@
     </div>
   </aside>
 
-  <!-- MAIN -->
   <main class="admin-main">
 
     <div class="topbar">
       <h1>Foglalások kezelése</h1>
       <div class="topbar-right">
         <div class="live-badge"><div class="live-dot"></div>Élő · 30mp</div>
-        <button class="btn-future" id="btn-future">📅 Csak jövőbeli</button>
-        <button class="btn-restore" id="btn-restore" title="Elrejtett foglalások visszaállítása">↩ Visszaállítás</button>
+        <button class="btn-future"  id="btn-future">📅 Csak jövőbeli</button>
+        <button class="btn-export"  id="btn-export">⬇ CSV export</button>
+        <button class="btn-restore" id="btn-restore">↩ Visszaállítás</button>
         <button class="btn-refresh" id="btn-refresh">⟳ Frissítés</button>
       </div>
     </div>
@@ -67,6 +64,16 @@
         <div class="stat-card c-dim">
           <div class="stat-ico">👷</div>
           <div><div class="stat-n" id="s-mech">–</div><div class="stat-l">Technikus</div></div>
+        </div>
+      </div>
+
+      <!-- DIAGRAM -->
+      <div class="chart-card">
+        <div class="chart-title">📊 Foglalások technikusonként</div>
+        <div class="chart-bars" id="chart-bars">
+          <div class="sk sk-bar"></div>
+          <div class="sk sk-bar"></div>
+          <div class="sk sk-bar"></div>
         </div>
       </div>
 

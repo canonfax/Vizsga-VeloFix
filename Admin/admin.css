@@ -358,3 +358,57 @@ tbody td:last-child { text-align: center; }
   font-size: .55rem; font-weight: 700; letter-spacing: .08em;
   color: var(--blue-light); opacity: .7;
 }
+
+/* ══════════════════════════════════════════
+   DIAGRAM (pure CSS bar chart)
+   ══════════════════════════════════════════ */
+.chart-card {
+  background: var(--panel); border: 1px solid var(--border);
+  border-radius: var(--r); padding: 1.1rem 1.25rem;
+  flex-shrink: 0;
+}
+.chart-title {
+  font-family: var(--font-display); font-size: .78rem; font-weight: 800;
+  color: var(--blue-light); letter-spacing: .12em; text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+.chart-bars { display: flex; flex-direction: column; gap: .6rem; }
+.chart-bar-wrap { display: flex; align-items: center; gap: .75rem; }
+.chart-bar-label {
+  width: 70px; flex-shrink: 0;
+  font-size: .78rem; font-weight: 600; color: var(--text-dim);
+  text-align: right; letter-spacing: .04em;
+}
+.chart-bar-track {
+  flex: 1; background: var(--bg3); border-radius: 2px;
+  height: 28px; overflow: hidden; border: 1px solid var(--border2);
+}
+.chart-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--blue), var(--blue-light));
+  border-radius: 2px;
+  display: flex; align-items: center; justify-content: flex-end;
+  transition: width .8s cubic-bezier(.17,.67,.34,1.1);
+  min-width: 36px;
+  box-shadow: 0 0 12px var(--blue-glow);
+}
+.chart-bar-val {
+  font-family: var(--font-display); font-size: .8rem; font-weight: 800;
+  color: #fff; padding-right: .6rem; letter-spacing: .04em;
+}
+.sk-bar { height: 28px; width: 100%; margin-bottom: .2rem; }
+
+/* ══════════════════════════════════════════
+   CSV EXPORT GOMB
+   ══════════════════════════════════════════ */
+.btn-export {
+  background: transparent; border: 1px solid rgba(0,200,117,.4);
+  color: var(--green); border-radius: var(--r);
+  padding: .35rem .85rem; font-family: var(--font-display);
+  font-size: .72rem; font-weight: 700; letter-spacing: .08em;
+  text-transform: uppercase; cursor: pointer; transition: all var(--t);
+}
+.btn-export:hover {
+  background: rgba(0,200,117,.08);
+  box-shadow: 0 0 10px rgba(0,200,117,.2);
+}

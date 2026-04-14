@@ -8,7 +8,7 @@
   let sortKey      = 'appointment_date';
   let sortAsc      = true;
   let filterMech   = 'all';
-  let filterCard   = 'all';  // 'all' | 'today' | 'week'
+  let filterCard   = 'all';
   let showFuture   = false;
 
   const DELETED_KEY = 'shimano_deleted_ids';
@@ -49,11 +49,76 @@
     $('s-week').textContent  = visible.filter(a => (a.appointment_date||'').slice(0,10) >= wago).length;
     $('s-mech').textContent  = mechanics.length || '–';
     $('nav-cnt').textContent = visible.length;
-
-    // Aktív kártya kiemelése
     document.querySelectorAll('.stat-card[data-filter]').forEach(c => {
       c.classList.toggle('active', c.dataset.filter === filterCard);
     });
+  }
+
+  // ── Mini diagram (pure CSS bar chart) ──
+  function renderChart() {
+    const deleted = getDeleted();
+    const visible = appointments.filter(a => !deleted.has(String(a.id)));
+    const wrap    = $('chart-bars');
+    if (!wrap) return;
+
+    const counts = mechanics.map(m => ({
+      name : m.name,
+      cnt  : visible.filter(a => String(a.hairdresser_id) === String(m.id ?? m.hairdresser_id)).length,
+    }));
+
+    const max = Math.max(...counts.map(c => c.cnt), 1);
+
+    wrap.innerHTML = counts.map(c => {
+      const pct = Math.round((c.cnt / max) * 100);
+      const firstName = c.name.split(' ')[1] || c.name;
+      return `
+        <div class="chart-bar-wrap">
+          <div class="chart-bar-label">${esc(firstName)}</div>
+          <div class="chart-bar-track">
+            <div class="chart-bar-fill" style="width:${pct}%">
+              <span class="chart-bar-val">${c.cnt}</span>
+            </div>
+          </div>
+        </div>
+      `;
+    }).join('');
+  }
+
+  // ── CSV Export ──
+  function exportCSV() {
+    const deleted = getDeleted();
+    const today   = todayStr(), wago = weekAgoStr();
+
+    let data = appointments.filter(a => {
+      if (deleted.has(String(a.id)))                                       return false;
+      if (showFuture && !isFuture(a))                                      return false;
+      if (filterMech !== 'all' && String(a.hairdresser_id) !== filterMech) return false;
+      if (filterCard === 'today' && !(a.appointment_date||'').startsWith(today)) return false;
+      if (filterCard === 'week'  && (a.appointment_date||'').slice(0,10) < wago) return false;
+      return true;
+    });
+
+    const header = ['Időpont','Technikus','Ügyfél neve','Telefonszám','Szervíz','Rögzítve'];
+    const rows   = data.map(a => {
+      const m = mechanics.find(x => String(x.id ?? x.hairdresser_id) === String(a.hairdresser_id));
+      return [
+        a.appointment_date || '',
+        m?.name || `#${a.hairdresser_id}`,
+        a.customer_name || '',
+        a.customer_phone || '',
+        a.service || '',
+        a.created_at || '',
+      ].map(v => `"${String(v).replace(/"/g,'""')}"`).join(',');
+    });
+
+    const csv  = '\uFEFF' + [header.join(','), ...rows].join('\r\n');
+    const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+    const url  = URL.createObjectURL(blob);
+    const a    = document.createElement('a');
+    a.href = url;
+    a.download = `shimano_foglalasok_${todayStr()}.csv`;
+    a.click();
+    URL.revokeObjectURL(url);
   }
 
   // ── Filter pillek ──
@@ -83,18 +148,14 @@
     const tbody   = $('tbody');
     const q       = ($('search').value || '').toLowerCase().trim();
     const deleted = getDeleted();
-    const today   = todayStr();
-    const wago    = weekAgoStr();
+    const today   = todayStr(), wago = weekAgoStr();
 
     let data = appointments.filter(a => {
       if (deleted.has(String(a.id)))                                       return false;
       if (showFuture && !isFuture(a))                                      return false;
       if (filterMech !== 'all' && String(a.hairdresser_id) !== filterMech) return false;
-
-      // Stat kártya szűrő
       if (filterCard === 'today' && !(a.appointment_date||'').startsWith(today)) return false;
       if (filterCard === 'week'  && (a.appointment_date||'').slice(0,10) < wago) return false;
-
       if (q && !(
         (a.customer_name  || '').toLowerCase().includes(q) ||
         (a.customer_phone || '').toLowerCase().includes(q) ||
@@ -142,25 +203,22 @@
         addDeleted(btn.dataset.id);
         renderStats();
         renderPills();
+        renderChart();
         renderTable();
       });
     });
   }
 
-  // ── Stat kártya kattintás ──
   function initStatCards() {
     document.querySelectorAll('.stat-card[data-filter]').forEach(card => {
       card.addEventListener('click', () => {
-        const f = card.dataset.filter;
-        // Ha ugyanarra kattint → visszaáll "all"-ra
-        filterCard = filterCard === f ? 'all' : f;
+        filterCard = filterCard === card.dataset.filter ? 'all' : card.dataset.filter;
         renderStats();
         renderTable();
       });
     });
   }
 
-  // ── Rendezés ──
   function initSort() {
     document.querySelectorAll('th[data-sort]').forEach(th => {
       th.addEventListener('click', () => {
@@ -191,6 +249,7 @@
       clearDeleted();
       renderStats();
       renderPills();
+      renderChart();
       renderTable();
     });
   }
@@ -200,12 +259,14 @@
     [mechanics, appointments] = await Promise.all([API.getMechanics(), API.getAppointments()]);
     renderStats();
     renderPills();
+    renderChart();
     renderTable();
     $('ts').textContent = new Date().toLocaleTimeString('hu-HU');
   }
 
   $('search').addEventListener('input', renderTable);
   $('btn-refresh').addEventListener('click', loadData);
+  $('btn-export').addEventListener('click', exportCSV);
   initSort();
   initStatCards();
   initFutureToggle();
