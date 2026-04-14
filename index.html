@@ -1,100 +1,95 @@
 <!DOCTYPE html>
 <html lang="hu">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shimano Service Center - Időpontfoglaló</title>
-    <link rel="stylesheet" href="CSS/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shimano Service Center – Időpontfoglaló</title>
+  <link rel="stylesheet" href="CSS/style.css">
 </head>
-
 <body>
 
-    <!-- Header -->
-    <header class="site-header">
-        <div class="header-inner">
-            <a href="index.html" class="logo">
-                <div class="logo-shimano">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Shimano_logo.svg/320px-Shimano_logo.svg.png" 
-                        alt="Shimano" onerror="this.outerHTML='<span style=\'font-family:sans-serif;font-weight:900;color:#fff;letter-spacing:.1em;font-size:1.1rem\'>SHIMANO</span>'">
-                </div>
-                <div class="logo-divider"></div>
-                <div class="logo-text">
-                    <div class="logo-title">Service Center</div>
-                    <div class="logo-sub">Authorized Dealer</div>
-                </div>
-            </a>
-            <nav class="header-nav">
-                <a href="index.html">Foglalás</a>
-                <a href="Admin/index.html" class="nav-admin">⚙ Admin</a>
-            </nav>
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="logo">
+        <div class="logo-shimano">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Shimano_logo.svg/320px-Shimano_logo.svg.png" alt="Shimano" onerror="this.outerHTML='<span style=\'font-family:sans-serif;font-weight:900;color:#fff;letter-spacing:.1em;font-size:1.1rem\'>SHIMANO</span>'">
         </div>
-    </header>
-
-    <!-- Hero -->
-    <section class="hero">
-        <div class="hero-inner">
-            <div class="hereo-eyebrow">Authorized Shimano Service Center</div>
-            <h1>Profi kerékpár<br><em>szervíz & karbantartás</em></h1>
-            <p class="hero-sub">Shimano-certificált technikusaink gondoskodnak kerékpárodról. Foglalj időpontot percek alatt – online, sorbanállás nélkül.</p>
-            <div class="hero-stats">
-                <div class="hero-stat"><div class="n">3</div><div class="1">Shimano Technikus</div></div>
-                <div class="hero-stat"><div class="n">800+</div><div class="1">Elvégzett szervíz</div></div>
-                <div class="hero-stat"><div class="n">4.9★</div><div class="1">Ügyfélértékelés</div></div>
-            </div>
+        <div class="logo-divider"></div>
+        <div class="logo-text">
+          <div class="logo-title">Service Center</div>
+          <div class="logo-sub">Authorized Dealer</div>
         </div>
-    </section>
-
-    <!-- Lépés jelző -->
-    <div class="step-bar">
-        <div class="step-bar-inner">
-            <div class="step-item active" id="step-1">
-                <div class="step-dot">1</div>
-                <span>Technikus</span>
-            </div>
-            <div class="step-line" id="line-1"></div>
-            <div class="step-item" id="step-2">
-                <div class="step-dot">2</div>
-                <span>Időpontfoglalás</span>
-            </div>
-            <div class="step-line" id="line-2"></div>
-            <div class="step-item" id="step-3">
-                <div class="step-dot">3</div>
-                <span>Visszaigazolás</span>
-            </div>
-        </div>
+      </a>
+      <nav class="header-nav">
+        <a href="index.html">Foglalás</a>
+        <a href="Admin/index.html" class="nav-admin">⚙ Admin</a>
+      </nav>
     </div>
+  </header>
 
-    <!-- APP -->
-    <div id="app"></div>
-
-    <!-- Services Strip -->
-    <div class="services-strip">
-        <div class="services-inner">
-            <div class="service-item"><span class="icon">🔧</span><h4>Általános szervíz</h4><p>Teljes átvizsgálás, kenés, beállítás – 2 óra</p></div>
-            <div class="service-item"><span class="icon">⚡</span><h4>E-bike szervíz</h4><p>Elektromos diagnosztika – 1 óra</p></div>
-            <div class="service-item"><span class="icon">🛞</span><h4>Kerék javítás</h4><p>Defektragasztás, centírozás – 30 perc</p></div>
-            <div class="service-item"><span class="icon">🏆</span><h4>Verseny felkészítés</h4><p>Versenykerékpár optimalizálás – 2 óra</p></div>
-            <div class="service-item"><span class="icon">🎯</span><h4>Fékrendszer</h4><p>Shimano fékrendszer beállítás – 30 perc</p></div>
-        </div>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-eyebrow">Authorized Shimano Service Center</div>
+      <h1>Profi kerékpár<br><em>szerviz & karbantartás</em></h1>
+      <p class="hero-sub">Shimano-certificált technikusaink gondoskodnak kerékpárodról. Foglalj időpontot percek alatt – online, sorbanállás nélkül.</p>
+      <div class="hero-stats">
+        <div class="hero-stat"><div class="n">3</div><div class="l">Shimano Technikus</div></div>
+        <div class="hero-stat"><div class="n">800+</div><div class="l">Elvégzett szervíz</div></div>
+        <div class="hero-stat"><div class="n">4.9★</div><div class="l">Ügyfélértékelés</div></div>
+      </div>
     </div>
+  </section>
 
-    <footer class="site-footer">
-        <div class="footer-shimano">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Shimano_logo.svg/320px-Shimano_logo.svg.png" alt="Shimano" onerror="this.style.display='none'">
-            <span>Authorized Service Center</span>
-        </div>
-        <p>© 2026 Shimano Service Center · Minden jog fenntartva</p>
-    </footer>
+  <!-- LÉPÉS JELZŐ -->
+  <div class="step-bar">
+    <div class="step-bar-inner">
+      <div class="step-item active" id="step-1">
+        <div class="step-dot">1</div>
+        <span>Technikus</span>
+      </div>
+      <div class="step-line" id="line-1"></div>
+      <div class="step-item" id="step-2">
+        <div class="step-dot">2</div>
+        <span>Időpontfoglalás</span>
+      </div>
+      <div class="step-line" id="line-2"></div>
+      <div class="step-item" id="step-3">
+        <div class="step-dot">3</div>
+        <span>Visszaigazolás</span>
+      </div>
+    </div>
+  </div>
 
-    <div class="toast-container" id="toasts"></div>
+  <!-- APP -->
+  <div id="app"></div>
 
-    <script src="JS/data.js"></script>
-    <script src="JS/api.js"></script>
-    <script src="JS/calendar.js"></script>
-    <script src="JS/timeslots.js"></script>
-    <script src="JS/app.js"></script>
+  <!-- SERVICES STRIP -->
+  <div class="services-strip">
+    <div class="services-inner">
+      <div class="service-item"><span class="icon">🔧</span><h4>Általános szervíz</h4><p>Teljes átvizsgálás, kenés, beállítás – 2 óra</p></div>
+      <div class="service-item"><span class="icon">⚡</span><h4>E-bike szervíz</h4><p>Elektromos diagnosztika – 1 óra</p></div>
+      <div class="service-item"><span class="icon">🛞</span><h4>Kerék javítás</h4><p>Defektragasztás, centírozás – 30 perc</p></div>
+      <div class="service-item"><span class="icon">🏆</span><h4>Verseny felkészítés</h4><p>Versenykerékpár optimalizálás – 2 óra</p></div>
+      <div class="service-item"><span class="icon">🎯</span><h4>Fékrendszer</h4><p>Shimano fékrendszer beállítás – 30 perc</p></div>
+    </div>
+  </div>
 
+  <footer class="site-footer">
+    <div class="footer-shimano">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Shimano_logo.svg/320px-Shimano_logo.svg.png" alt="Shimano" onerror="this.style.display='none'">
+      <span>Authorized Service Center</span>
+    </div>
+    <p>© 2026 Shimano Service Center · Minden jog fenntartva</p>
+  </footer>
+
+  <div class="toast-container" id="toasts"></div>
+
+  <script src="JS/data.js"></script>
+  <script src="JS/api.js"></script>
+  <script src="JS/calendar.js"></script>
+  <script src="JS/timeslots.js"></script>
+  <script src="JS/app.js"></script>
 </body>
-
 </html>

@@ -1,114 +1,113 @@
 <!DOCTYPE html>
 <html lang="hu">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shimano Service Center - Admin</title>
-    <link rel="stylesheet" href="admin.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shimano Service Center – Admin</title>
+  <link rel="stylesheet" href="admin.css">
 </head>
 <body>
 
-    <!-- Sidebar -->
-    <aside class="sidebar">
-        <div class="sb-logo">
-            <div>
-                <div class="sb-logo-shimano">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Shimano_logo.svg/320px-Shimano_logo.svg.png" alt="Shimano" onerror="this.outerHTML='<span style=\'font-weight:900;color:#1a8fff;font-size:.9rem\'>SHIMANO</span>'">
-                </div>
-                <div class="sb-logo-label">Service Admin</div>
-            </div>
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sb-logo">
+      <div>
+        <div class="sb-logo-shimano">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Shimano_logo.svg/320px-Shimano_logo.svg.png" alt="Shimano" onerror="this.outerHTML='<span style=\'font-weight:900;color:#1a8fff;font-size:.9rem\'>SHIMANO</span>'">
         </div>
-        <nav class="sb-nav">
-            <a href="index.html" class="sb-link active">
-                <span class="ico">📋</span>
-                Foglalások
-                <span class="sb-count" id="nav-cnt">-</span>
-            </a>
-            <a href="../index.html" class="sb-link">
-                <span class="ico">🔧</span>
-                Foglaló oldal
-            </a>
-        </nav>
-        <div class="sb-footer">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Shimano_logo.svg/320px-Shimano_logo.svg.png" alt="Shimano" onerror="this.style.display='none'">
-            © 2026 Service Center
+        <div class="sb-logo-label">Service Admin</div>
+      </div>
+    </div>
+    <nav class="sb-nav">
+      <a href="index.html" class="sb-link active">
+        <span class="ico">📋</span>
+        Foglalások
+        <span class="sb-count" id="nav-cnt">–</span>
+      </a>
+      <a href="../index.html" class="sb-link">
+        <span class="ico">🔧</span>
+        Foglaló oldal
+      </a>
+    </nav>
+    <div class="sb-footer">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Shimano_logo.svg/320px-Shimano_logo.svg.png" alt="Shimano" onerror="this.style.display='none'">
+      © 2026 Service Center
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="admin-main">
+
+    <div class="topbar">
+      <h1>Foglalások kezelése</h1>
+      <div class="topbar-right">
+        <div class="live-badge"><div class="live-dot"></div>Élő · 30mp</div>
+        <button class="btn-refresh" id="btn-refresh">⟳ Frissítés</button>
+      </div>
+    </div>
+
+    <div class="admin-content">
+
+      <!-- STAT CARDS -->
+      <div class="stat-grid">
+        <div class="stat-card c-blue">
+          <div class="stat-ico">📅</div>
+          <div><div class="stat-n" id="s-total">–</div><div class="stat-l">Összes foglalás</div></div>
         </div>
-    </aside>
-
-    <!-- Main -->
-    <main class="admin-main">
-
-        <div class="topbar">
-            <h1>Foglalások kezelése</h1>
-            <div class="topbar-right">
-                <div class="live-badge"><div class="live-dot"></div>Élő · 30mp</div>
-                <button class="btn-refresh" id="btn-refresh">⟳ Frissítés</button>
-            </div>
+        <div class="stat-card c-green">
+          <div class="stat-ico">🌅</div>
+          <div><div class="stat-n" id="s-today">–</div><div class="stat-l">Mai foglalás</div></div>
         </div>
-
-        <div class="admin-content">
-
-            <!-- Stat Cards -->
-            <div class="stat-grid">
-                <div class="stat-card c-blue">
-                    <div class="stat-ico">📅</div>
-                    <div><div class="stat-n" id="s-total">-</div><div class="stat-1">Összes foglalás</div></div>
-                </div>
-                <div class="stat-card c-green">
-                    <div class="stat-ico">🌅</div>
-                    <div><div class="stat-n" id="s-today">-</div><div class="stat-1">Mai foglalás</div></div>
-                </div>
-                <div class="stat-card c-orange">
-                    <div class="stat-ico">📆</div>
-                    <div><div class="stat-n" id="s-week">-</div><div class="stat-1">Heti foglalás</div></div>
-                </div>
-                <div class="stat-card c-dim">
-                    <div class="stat-ico">👷</div>
-                    <div><div class="stat-n" id="s-mech">-</div><div class="stat-1">Technikus</div></div>
-                </div>
-            </div>
-
-            <!-- Filter Pills -->
-            <div class="filter-row">
-                <span class="filter-label">Szűrés:</span>
-                <div id="pills" style="display: flex; gap: .5rem; flex-wrap: wrap;"></div>
-            </div>
-
-            <!-- Table -->
-            <div class="table-card">
-                <div class="table-card-head">
-                    <div class="table-card-title">Foglalások listája</div>
-                    <input class="search-input" type="text" id="search" placeholder="🔍  Keresés (név, telefon, szervíz)...">
-                </div>
-                <div class="table-wrap">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th data-sort="appointment_date">Időpont <span class="sort-ico">↕</span></th>
-                                <th data-sort="mechanic">Technikus <span class="sort-ico">↕</span></th>
-                                <th data-sort="customer_name">Ügyfél <span class="sort-ico">↕</span></th>
-                                <th>Telefon</th>
-                                <th data-sort="service">Szervíz <span class="sort-ico">↕</span></th>
-                                <th data-sort="created_at">Rögzítva <span class="sort-ico">↕</span></th>
-                            </tr>
-                        </thead>
-                        <tbody id="tbody">
-                            <tr class="loading-row"><td colspan="6"><div class="spin"></div><br>Betöltés...</td></tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="table-foot">
-                    <span id="rec-count">- rekord</span>
-                    <span>Frissítve: <span id="ts">-</span></span>
-                </div>
-            </div>
-            
+        <div class="stat-card c-orange">
+          <div class="stat-ico">📆</div>
+          <div><div class="stat-n" id="s-week">–</div><div class="stat-l">Heti foglalás</div></div>
         </div>
-    </main>
+        <div class="stat-card c-dim">
+          <div class="stat-ico">👷</div>
+          <div><div class="stat-n" id="s-mech">–</div><div class="stat-l">Technikus</div></div>
+        </div>
+      </div>
 
-    <script src="../JS/data.js"></script>
-    <script src="../JS/api.js"></script>
-    <script src="admin.js"></script>
-    
+      <!-- FILTER PILLS -->
+      <div class="filter-row">
+        <span class="filter-label">Szűrés:</span>
+        <div id="pills" style="display:flex;gap:.5rem;flex-wrap:wrap;"></div>
+      </div>
+
+      <!-- TABLE -->
+      <div class="table-card">
+        <div class="table-card-head">
+          <div class="table-card-title">Foglalások listája</div>
+          <input class="search-input" type="text" id="search" placeholder="🔍  Keresés (név, telefon, szervíz)...">
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th data-sort="appointment_date">Időpont <span class="sort-ico">↕</span></th>
+                <th data-sort="mechanic">Technikus <span class="sort-ico">↕</span></th>
+                <th data-sort="customer_name">Ügyfél <span class="sort-ico">↕</span></th>
+                <th>Telefon</th>
+                <th data-sort="service">Szervíz <span class="sort-ico">↕</span></th>
+                <th data-sort="created_at">Rögzítve <span class="sort-ico">↕</span></th>
+              </tr>
+            </thead>
+            <tbody id="tbody">
+              <tr class="loading-row"><td colspan="6"><div class="spin"></div><br>Betöltés...</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="table-foot">
+          <span id="rec-count">– rekord</span>
+          <span>Frissítve: <span id="ts">–</span></span>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <script src="../JS/data.js"></script>
+  <script src="../JS/api.js"></script>
+  <script src="admin.js"></script>
 </body>
 </html>
