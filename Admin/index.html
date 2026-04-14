@@ -42,6 +42,8 @@
       <h1>Foglalások kezelése</h1>
       <div class="topbar-right">
         <div class="live-badge"><div class="live-dot"></div>Élő · 30mp</div>
+        <button class="btn-future" id="btn-future">📅 Csak jövőbeli</button>
+        <button class="btn-restore" id="btn-restore" title="Elrejtett foglalások visszaállítása">↩ Visszaállítás</button>
         <button class="btn-refresh" id="btn-refresh">⟳ Frissítés</button>
       </div>
     </div>
@@ -50,15 +52,15 @@
 
       <!-- STAT CARDS -->
       <div class="stat-grid">
-        <div class="stat-card c-blue">
+        <div class="stat-card c-blue" data-filter="all">
           <div class="stat-ico">📅</div>
           <div><div class="stat-n" id="s-total">–</div><div class="stat-l">Összes foglalás</div></div>
         </div>
-        <div class="stat-card c-green">
+        <div class="stat-card c-green" data-filter="today">
           <div class="stat-ico">🌅</div>
           <div><div class="stat-n" id="s-today">–</div><div class="stat-l">Mai foglalás</div></div>
         </div>
-        <div class="stat-card c-orange">
+        <div class="stat-card c-orange" data-filter="week">
           <div class="stat-ico">📆</div>
           <div><div class="stat-n" id="s-week">–</div><div class="stat-l">Heti foglalás</div></div>
         </div>
@@ -90,10 +92,11 @@
                 <th>Telefon</th>
                 <th data-sort="service">Szervíz <span class="sort-ico">↕</span></th>
                 <th data-sort="created_at">Rögzítve <span class="sort-ico">↕</span></th>
+                <th class="col-action">Művelet</th>
               </tr>
             </thead>
             <tbody id="tbody">
-              <tr class="loading-row"><td colspan="6"><div class="spin"></div><br>Betöltés...</td></tr>
+              <tr class="loading-row"><td colspan="7"><div class="spin"></div><br>Betöltés...</td></tr>
             </tbody>
           </table>
         </div>
